@@ -43,6 +43,23 @@ function SWEP:CleanupViewModel()
 	if IsValid(self.CustomViewModelEntity) then
 		self.CustomViewModelEntity:Remove()
 	end
+
+	-- Reset the viewmodel invisibility
+	vm:SetMaterial("")
+end
+
+function SWEP:MakeViewModelTransparent()
+	local owner = self:GetOwner()
+	if IsValid(owner) then
+		local vm = owner:GetViewModel()
+		if IsValid(vm) then
+			vm:SetMaterial("Models/effects/vol_light001")
+		end
+	end
+end
+
+function SWEP:Deploy()
+	self:MakeViewModelTransparent()
 end
 
 function SWEP:Holster(weapon)

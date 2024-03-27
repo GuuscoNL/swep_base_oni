@@ -24,13 +24,11 @@ SWEP.DrawAmmo = false
 
 function SWEP:Initialize()
 	self:SetHoldType(self.HoldType)
+	self:MakeViewModelTransparent()
 
 	if isfunction(self.InitializeCustom) then
 		self:InitializeCustom()
 	end
-end
-
-function SWEP:Deploy()
 end
 
 function SWEP:Reload()
