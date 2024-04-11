@@ -47,10 +47,16 @@ end
 
 function SWEP:Holster(weapon)
 	self:CleanupViewModel()
+	if isfunction(self.HolsterCustom) then
+		self:HolsterCustom(weapon)
+	end
 end
 
 function SWEP:OnRemove()
 	self:CleanupViewModel()
+	if isfunction(self.OnRemoveCustom) then
+		self:OnRemoveCustom()
+	end
 end
 
 net.Receive("OniBase.ResetViewModel", function()
